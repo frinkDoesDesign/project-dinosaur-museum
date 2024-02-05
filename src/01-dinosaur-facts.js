@@ -23,21 +23,21 @@ const exampleDinosaurData = require("../data/dinosaurs");
  *  //> { Brachiosaurus: 98.43 }
  */
 function getLongestDinosaur(dinosaurs) {
-  let longestDinosaurLength = 0;
-  let longestDinosaurName = '';
-  if(dinosaurs.length === 0){ return {}};
+  let longestDinosaurLength = 0; //declare empty variable to store the value longest dino length 
+  let longestDinosaurName = ''; //declare emptpty variable to store the the longest dino name
+  if(dinosaurs.length === 0){ return {}}; //this line takes care of edge cases
 
-  for (let i = 0; i < dinosaurs.length; i++){
-    if (dinosaurs[i].lengthInMeters > longestDinosaurLength)
-    {longestDinosaurLength = dinosaurs[i].lengthInMeters;
-    longestDinosaurName = dinosaurs[i].name;
+  for (let i = 0; i < dinosaurs.length; i++){ // loop throough the dinosaur array
+    if (dinosaurs[i].lengthInMeters > longestDinosaurLength)//checks each dino object's length for greatest lengthInMeters
+    {longestDinosaurLength = dinosaurs[i].lengthInMeters;//makes the longets lenghtInMeters the New value for longestDinoSaurLenght
+    longestDinosaurName = dinosaurs[i].name;//makes the name value the new vaule for the longestDinosaurName variable
     }
   }
 
-  let lengthInFeet = longestDinosaurLength * 3.281;
-  const longestDinosaur = {}
-  longestDinosaur [longestDinosaurName] = lengthInFeet
-  return longestDinosaur;
+  let lengthInFeet = longestDinosaurLength * 3.281;//Decalare a new variable with the longest lenght converted to feet 
+  const longestDinosaur = {} //declaure an empty object  
+  longestDinosaur [longestDinosaurName] = lengthInFeet //set a key of longestDino and it's valute to the length in feet 
+  return longestDinosaur; //return the object
   }
   
 
@@ -62,7 +62,18 @@ function getLongestDinosaur(dinosaurs) {
  *  //> "A dinosaur with an ID of 'incorrect-id' cannot be found."
  */
 function getDinosaurDescription(dinosaurs, id) {
-
+  for (let key of dinosaurs){
+    let pronunciation = key.pronunciation
+    let name = key.name
+    let info = key.info
+    let period = key.period
+    let mya = key.mya
+  
+    if(key.dinosaurId === id){
+      return `${name} (${pronunciation})\n${info} It lived in the ${period} period, over ${mya.length === 1 ? mya[0] : mya[1]} million years ago.`
+    }
+  }
+  return `A dinosaur with an ID of '${id}' cannot be found.`
 }
 
 /**
@@ -90,7 +101,9 @@ function getDinosaurDescription(dinosaurs, id) {
  *  getDinosaursAliveMya(dinosaurs, 65, "unknown-key");
  *  //> ["WHQcpcOj0G"]
  */
-function getDinosaursAliveMya(dinosaurs, mya, key) {}
+function getDinosaursAliveMya(dinosaurs, mya, key) {
+  for ()
+}
 
 module.exports = {
   getLongestDinosaur,
